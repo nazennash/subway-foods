@@ -1,22 +1,28 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 import { BiCart, BiMenu, BiSearch } from "react-icons/bi";
+import { Store } from "../context/Store";
 
 export const Navbar = ({ setShowLogin }) => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [activeMenu, setActiveMenu] = useState("home");
+  const { totalQuantity } = useContext(Store);
 
   return (
     <>
       <div className="flex justify-between items-center container mx-auto mt-3 md:mt-0 md:py-5 px-3 lg:px-0">
         <div>
-          <img
-            src={logo}
-            alt=""
-            className="w-32"
-            style={{ filter: "hue-rotate(330deg) saturate(2) brightness(0.5)" }}
-          />
+          <Link to="/">
+            <img
+              src={logo}
+              alt=""
+              className="w-32"
+              style={{
+                filter: "hue-rotate(330deg) saturate(2) brightness(0.5)",
+              }}
+            />
+          </Link>
         </div>
         <div className="hidden md:flex gap-5 lg:gap-10 items-center">
           <Link
@@ -33,9 +39,14 @@ export const Navbar = ({ setShowLogin }) => {
             contact us
           </Link>
         </div>
-        <div className="hidden md:flex gap-5 items-center">
+        <div className="hidden md:flex gap-6 items-center">
           <BiSearch size={30} />
-          <BiCart size={30} />
+          <Link to="/cart" className="flex relative">
+            <BiCart size={30} />
+            <span className="absolute -top-2 left-6 bg-orange-500 text-white font-bold px-1.5 text-sm rounded-full">
+              {totalQuantity()}
+            </span>
+          </Link>
           <Link
             to="/"
             onClick={() => setShowLogin(true)}

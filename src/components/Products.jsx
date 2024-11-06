@@ -36,7 +36,7 @@ export const Products = ({ selectedCategory, setSelectedCategory }) => {
         {filteredProducts.slice(0, 10).map((product) => (
           <div
             key={product.id}
-            className="shadow-md rounded flex flex-col space-y-2 p-2 mx-auto hover:transform hover:scale-105 hover:shadow-xl hover:duration-1000"
+            className="shadow-md rounded flex flex-col space-y-2 p-2 mx-auto hover:transform hover:scale-105 hover:shadow-xl hover:duration-300"
           >
             <img
               src={product.images}

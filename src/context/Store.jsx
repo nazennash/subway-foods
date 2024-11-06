@@ -33,6 +33,27 @@ export const StoreProvider = ({ children }) => {
     setCartItems({});
   };
 
+  const getTotalPrice = () =>
+    products
+      .filter((product) => cartItems[product.id] > 0)
+      .reduce((acc, product) => acc + product.price * cartItems[product.id], 0)
+      .toFixed(2);
+
+  const getTotalCartAmount = () =>
+    (
+      products
+        .filter((product) => cartItems[product.id] > 0)
+        .reduce(
+          (acc, product) => acc + product.price * cartItems[product.id],
+          0
+        ) + 2
+    ).toFixed(2);
+
+  const totalQuantity = () =>
+    products
+      .filter((product) => cartItems[product.id] > 0)
+      .reduce((acc, product) => acc + cartItems[product.id], 0);
+
   const fetchProducts = async () => {
     try {
       const response = await axios.get(
@@ -57,6 +78,9 @@ export const StoreProvider = ({ children }) => {
         addItemToCart,
         minusItemFromCart,
         clearCart,
+        getTotalPrice,
+        totalQuantity,
+        getTotalCartAmount,
       }}
     >
       {children}

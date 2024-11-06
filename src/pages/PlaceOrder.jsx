@@ -1,5 +1,12 @@
 import React from "react";
+import { PlaceOrderDetails } from "../components/PlaceOrderDetails";
 
 export const PlaceOrder = () => {
-  return <div>PlaceOrder</div>;
+  return (
+    <>
+      <div>
+        <PlaceOrderDetails />
+      </div>
+    </>
+  );
 };
