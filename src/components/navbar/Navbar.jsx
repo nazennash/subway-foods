@@ -4,10 +4,12 @@ import { Link } from "react-router-dom";
 import { BiCart, BiMenu, BiSearch } from "react-icons/bi";
 
 export const Navbar = () => {
-  const [menuIconClicked, setMenuIconClicked] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [activeMenu, setActiveMenu] = useState("home");
+
   return (
     <>
-      <div className="flex justify-between items-center container mx-auto p-5">
+      <div className="flex justify-between items-center container mx-auto py-5">
         <div>
           <img
             src={logo}
@@ -17,16 +19,28 @@ export const Navbar = () => {
           />
         </div>
         <div className="hidden md:flex gap-5 lg:gap-10 items-center">
-          <Link to="/">home</Link>
-          <Link to="/">menu</Link>
-          <Link to="/">mobile-app</Link>
-          <Link to="/">contact us</Link>
+          <Link
+            onClick={() => setActiveMenu("home")}
+            to="/"
+            // className={activeMenu === "home" ? "text-orange-500" : ""}
+          >
+            home
+          </Link>
+          <Link onClick={() => setActiveMenu("menu")} to="/">
+            menu
+          </Link>
+          <Link onClick={() => setActiveMenu("mobile-app")} to="/">
+            mobile-app
+          </Link>
+          <Link onClick={() => setActiveMenu("contact")} to="/">
+            contact us
+          </Link>
         </div>
         <div className="hidden md:flex gap-5 items-center">
           <BiSearch size={30} />
           <BiCart size={30} />
           <Link
-            to="/"
+            to="/cart"
             className="bg-orange-500 text-white font-semibold px-4 py-1 rounded-2xl hover:bg-orange-600"
           >
             Sign in
@@ -36,13 +50,13 @@ export const Navbar = () => {
         <div className="md:hidden">
           <BiMenu
             size={30}
-            onClick={() => setMenuIconClicked(!menuIconClicked)}
+            onClick={() => setShowMobileMenu(!showMobileMenu)}
           />
         </div>
       </div>
 
       {/* mobile navbar */}
-      {menuIconClicked && (
+      {showMobileMenu && (
         <div
           className="flex md:hidden flex-col gap-5 p-2 bg-slate-100 shadow-md"
           id="mobile-navbar"
