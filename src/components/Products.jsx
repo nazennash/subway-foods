@@ -1,74 +1,72 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Store } from "../context/Store";
 import { BiMinus, BiPlus } from "react-icons/bi";
 
-export const Products = () => {
-  const { products } = useContext(Store);
-  const [itemCounts, setItemCounts] = useState({});
+export const Products = ({ selectedCategory, setSelectedCategory }) => {
+  const { products, addItemToCart, minusItemFromCart, cartItems } =
+    useContext(Store);
 
-  const incrementCount = (productId) => {
-    setItemCounts((prevCounts) => ({
-      ...prevCounts,
-      [productId]: (prevCounts[productId] || 0) + 1,
-    }));
-  };
-
-  const decrementCount = (productId) => {
-    setItemCounts((prevCounts) => ({
-      ...prevCounts,
-      [productId]: Math.max((prevCounts[productId] || 0) - 1, 0),
-    }));
-  };
+  const filteredProducts = selectedCategory
+    ? products.filter((product) => product.category.id === selectedCategory)
+    : products;
 
   return (
-    <>
-      <div className="mt-5 p-3">
+    <div className="mt-5 p-3">
+      <div className="mb-2 flex justify-between items-center">
         <div>
-          <div className="mb-2">
-            <span className="font-bold text-xl">Products | </span>
-            <span className="text-gray-700">
-              Filter by clicking on categories above
-            </span>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 ">
-            {products.slice(0, 10).map((product) => (
-              <div
-                key={product.id}
-                className="shadow-md rounded flex flex-col space-y-2 p-2 mx-auto"
-              >
-                <img
-                  src={product.images}
-                  alt={product.title}
-                  className="w-48 flex mx-auto rounded-t-xl"
-                />
-                <div className="">
-                  <p className="font-semibold">
-                    {product.title.length > 20 ? (
-                      <h3>{product.title.slice(0, 15)}...</h3>
-                    ) : (
-                      <h3>{product.title}</h3>
-                    )}
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <h3>${product.price}</h3>
-                    <div>
-                      {itemCounts[product.id] ? (
-                        <div className="flex items-center gap-2">
-                          <BiPlus onClick={() => incrementCount(product.id)} />
-                          <span>{itemCounts[product.id]}</span>
-                          <BiMinus onClick={() => decrementCount(product.id)} />
-                        </div>
-                      ) : (
-                        <BiPlus onClick={() => incrementCount(product.id)} />
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <span className="font-bold text-xl">Products | </span>
+          <span className="text-gray-700">
+            Filter by clicking on categories above
+          </span>
+        </div>
+        <div>
+          {selectedCategory && (
+            <button
+              onClick={() => setSelectedCategory(null)}
+              className="text-gray-700"
+            >
+              Reset filter
+            </button>
+          )}
         </div>
       </div>
-    </>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+        {filteredProducts.slice(0, 10).map((product) => (
+          <div
+            key={product.id}
+            className="shadow-md rounded flex flex-col space-y-2 p-2 mx-auto"
+          >
+            <img
+              src={product.images}
+              alt={product.title}
+              className="w-48 flex mx-auto rounded-t-xl"
+            />
+            <div>
+              <p className="font-semibold">
+                {product.title.length > 20 ? (
+                  <h3>{product.title.slice(0, 15)}...</h3>
+                ) : (
+                  <h3>{product.title}</h3>
+                )}
+              </p>
+              <div className="flex items-center justify-between">
+                <h3>${product.price}</h3>
+                <div>
+                  {cartItems[product.id] ? (
+                    <div className="flex items-center gap-2">
+                      <BiPlus onClick={() => addItemToCart(product.id)} />
+                      <span>{cartItems[product.id]}</span>
+                      <BiMinus onClick={() => minusItemFromCart(product.id)} />
+                    </div>
+                  ) : (
+                    <BiPlus onClick={() => addItemToCart(product.id)} />
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };

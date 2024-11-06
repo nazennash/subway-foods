@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-export const ExploreMenu = () => {
+export const ExploreMenu = ({ setSelectedCategory }) => {
   const [categories, setCategories] = useState([]);
 
   const fetchCategories = async () => {
@@ -45,7 +45,10 @@ export const ExploreMenu = () => {
         <div className="flex flex-row gap-5 overflow-x-auto scrollbar-hide mt-5">
           {categories.map((category) => (
             <div key={category.id}>
-              <div className="w-28 flex items-center flex-col">
+              <div
+                className="w-28 flex items-center flex-col"
+                onClick={() => setSelectedCategory(category.id)}
+              >
                 <img
                   src={category.image}
                   alt={category.name}
