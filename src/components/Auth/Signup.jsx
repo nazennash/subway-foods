@@ -5,7 +5,7 @@ import { CgClose } from "react-icons/cg";
 export const Signup = ({ setIsSignup, setShowSignup }) => {
   return (
     <div className="fixed inset-0 flex justify-center items-center bg-gray-900 bg-opacity-50 z-50">
-      <div className="flex flex-col justify-center px-6 py-12 sm:px-8 bg-white rounded-lg shadow-xl w-full max-w-sm">
+      <div className="flex flex-col justify-center px-6 py-12 sm:px-8 bg-white rounded-lg shadow-xl w-full max-w-xs md:max-w-sm">
         <div className="flex items-center justify-between">
           <img className="h-10 w-auto" src={logo} alt="Logo" />
           <CgClose
