@@ -1,9 +1,25 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Store } from "../context/Store";
+import { BiMinus, BiPlus } from "react-icons/bi";
 
 export const Products = () => {
   const { products } = useContext(Store);
-  console.log(products);
+  const [itemCounts, setItemCounts] = useState({});
+
+  const incrementCount = (productId) => {
+    setItemCounts((prevCounts) => ({
+      ...prevCounts,
+      [productId]: (prevCounts[productId] || 0) + 1,
+    }));
+  };
+
+  const decrementCount = (productId) => {
+    setItemCounts((prevCounts) => ({
+      ...prevCounts,
+      [productId]: Math.max((prevCounts[productId] || 0) - 1, 0),
+    }));
+  };
+
   return (
     <>
       <div className="mt-5 p-3">
@@ -25,7 +41,7 @@ export const Products = () => {
                   alt={product.title}
                   className="w-48 flex mx-auto rounded-t-xl"
                 />
-                <div>
+                <div className="">
                   <p className="font-semibold">
                     {product.title.length > 20 ? (
                       <h3>{product.title.slice(0, 15)}...</h3>
@@ -33,7 +49,20 @@ export const Products = () => {
                       <h3>{product.title}</h3>
                     )}
                   </p>
-                  <h3>${product.price}</h3>
+                  <div className="flex items-center justify-between">
+                    <h3>${product.price}</h3>
+                    <div>
+                      {itemCounts[product.id] ? (
+                        <div className="flex items-center gap-2">
+                          <BiPlus onClick={() => incrementCount(product.id)} />
+                          <span>{itemCounts[product.id]}</span>
+                          <BiMinus onClick={() => decrementCount(product.id)} />
+                        </div>
+                      ) : (
+                        <BiPlus onClick={() => incrementCount(product.id)} />
+                      )}
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}
