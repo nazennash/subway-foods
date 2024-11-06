@@ -15,9 +15,11 @@ export const Products = ({ selectedCategory, setSelectedCategory }) => {
       <div className="mb-2 flex justify-between items-center">
         <div>
           <span className="font-bold text-xl">Products | </span>
-          <span className="text-gray-700">
-            Filter by clicking on categories above
-          </span>
+          {!selectedCategory && (
+            <span className="text-gray-700">
+              Filter by clicking on categories above
+            </span>
+          )}
         </div>
         <div>
           {selectedCategory && (
