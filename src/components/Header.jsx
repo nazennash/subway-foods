@@ -1,3 +1,4 @@
+import { BsArrowRight } from "react-icons/bs";
 import image from "../assets/image2.jpg";
 
 export const Header = () => {
@@ -12,15 +13,15 @@ export const Header = () => {
         <div className="absolute inset-0 p-5 flex flex-col gap-5 justify-center bg-gray-900 bg-opacity-50 rounded-xl  text-white">
           <div className="flex flex-col gap-3 md:gap-5 max-w-lg">
             <p className="text-3xl md:text-4xl font-bold">
-              Order your favourite food here
+              Satisfy your cravings and order the food you love here
             </p>
             <p className="text-sm md:text-base">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
               laboriosam pariatur, saepe accusamus blanditiis et.
             </p>
           </div>
-          <button className="w-32 md:w-40 bg-white text-black font-semibold py-2 rounded-3xl hover:bg-gray-200 transition duration-300">
-            View Menu
+          <button className="w-32 md:w-40 bg-white text-black font-semibold py-2 rounded-3xl hover:bg-gray-200 transition duration-300 flex items-center gap-2 justify-center">
+            <span>Check out</span> <BsArrowRight />
           </button>
         </div>
       </div>

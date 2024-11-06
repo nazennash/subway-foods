@@ -32,7 +32,7 @@ export const ExploreMenu = ({ setSelectedCategory }) => {
 
   return (
     <>
-      <div className="mt-5 flex flex-col p-3 gap-3">
+      <div className="mt-5 flex flex-col p-3 gap-3" id="explore-menu">
         <div>
           <p className="font-bold text-xl tracking-wide">Explore our menu</p>
           <p className="max-w-xl">

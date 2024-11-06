@@ -6,6 +6,7 @@ import { Footer } from "../components/Footer";
 
 export const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
+
   return (
     <>
       <div className="container mx-auto">

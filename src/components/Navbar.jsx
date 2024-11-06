@@ -3,7 +3,7 @@ import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 import { BiCart, BiMenu, BiSearch } from "react-icons/bi";
 
-export const Navbar = () => {
+export const Navbar = ({ setShowLogin }) => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [activeMenu, setActiveMenu] = useState("home");
 
@@ -37,7 +37,8 @@ export const Navbar = () => {
           <BiSearch size={30} />
           <BiCart size={30} />
           <Link
-            to="/cart"
+            to="/"
+            onClick={() => setShowLogin(true)}
             className="bg-orange-500 text-white font-semibold px-4 py-1 rounded-2xl hover:bg-orange-600"
           >
             Sign in
@@ -60,13 +61,14 @@ export const Navbar = () => {
         >
           <div className="flex flex-col p-3 capitalize gap-5">
             <BiSearch size={30} />
-            <Link to="/">home</Link>
-            <Link to="/">menu</Link>
+            <a href="/">home</a>
+            <a href="#explore-menu">menu</a>
             <Link to="/">contact us</Link>
           </div>
           <div className="flex w-full justify-between">
             <Link
               to="/"
+              onClick={() => setShowLogin(true)}
               className="bg-blue-500 text-white w-1/2 p-3 text-center rounded-l-lg"
             >
               Sign in
