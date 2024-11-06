@@ -13,17 +13,13 @@ export const Navbar = () => {
         <div>
           <img
             src={logo}
-            alt=""
+            alt="Logo"
             className="w-32"
             style={{ filter: "hue-rotate(330deg) saturate(2) brightness(0.5)" }}
           />
         </div>
         <div className="hidden md:flex gap-5 lg:gap-10 items-center">
-          <Link
-            onClick={() => setActiveMenu("home")}
-            to="/"
-            // className={activeMenu === "home" ? "text-orange-500" : ""}
-          >
+          <Link onClick={() => setActiveMenu("home")} to="/">
             home
           </Link>
           <Link onClick={() => setActiveMenu("menu")} to="/">
@@ -55,29 +51,39 @@ export const Navbar = () => {
         </div>
       </div>
 
-      {/* mobile navbar */}
+      {/* Mobile Navbar Overlay */}
       {showMobileMenu && (
         <div
-          className="flex md:hidden flex-col gap-5 p-2 bg-slate-100 shadow-md"
+          className="fixed inset-0 z-50 flex flex-col gap-5 p-5 bg-black bg-opacity-70 text-white"
           id="mobile-navbar"
         >
           <div className="flex flex-col p-3 capitalize gap-5">
-            <BiSearch size={30} />
-            <Link to="/">home</Link>
-            <Link to="/">menu</Link>
-            <Link to="/">mobile-app</Link>
-            <Link to="/">contact us</Link>
+            <BiSearch size={30} onClick={() => setShowMobileMenu(false)} />
+            <Link to="/" onClick={() => setShowMobileMenu(false)}>
+              home
+            </Link>
+            <Link to="/" onClick={() => setShowMobileMenu(false)}>
+              menu
+            </Link>
+            <Link to="/" onClick={() => setShowMobileMenu(false)}>
+              mobile-app
+            </Link>
+            <Link to="/" onClick={() => setShowMobileMenu(false)}>
+              contact us
+            </Link>
           </div>
-          <div className="flex w-full justify-between">
+          <div className="flex w-full justify-between mt-5">
             <Link
-              to="/"
+              to="/signin"
               className="bg-blue-500 text-white w-1/2 p-3 text-center rounded-l-lg"
+              onClick={() => setShowMobileMenu(false)}
             >
               Sign in
             </Link>
             <Link
-              to="/"
+              to="/login"
               className="bg-green-500 text-white w-1/2 p-3 text-center rounded-r-lg"
+              onClick={() => setShowMobileMenu(false)}
             >
               Login
             </Link>

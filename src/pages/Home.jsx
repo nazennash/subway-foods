@@ -1,14 +1,15 @@
 import React from "react";
-import { Navbar } from "../components/navbar/Navbar";
 import { Header } from "../components/navbar/Header";
+import { ExploreMenu } from "../components/navbar/ExploreMenu";
 
 export const Home = () => {
   return (
     <>
-      {/* <Navbar /> */}
       <div className="container mx-auto">
         <Header />
+        <ExploreMenu />
       </div>
+      <div className="mt-5"></div>
     </>
   );
 };

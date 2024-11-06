@@ -1,8 +1,8 @@
-import image from "../../assets/imag1.jpg";
+import image from "../../assets/image2.jpg";
 
 export const Header = () => {
   return (
-    <div className="m-2 lg:m-0">
+    <div className="m-2 md:m-0">
       <div className="relative w-full h-auto flex ">
         <img
           src={image}
