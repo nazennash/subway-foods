@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Cart } from "./pages/Cart";
 import { PlaceOrder } from "./pages/PlaceOrder";
-import { Navbar } from "./components/navbar/Navbar";
+import { Navbar } from "./components/Navbar";
 
 const App = () => {
   return (

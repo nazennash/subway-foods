@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "../../assets/logo.png";
+import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 import { BiCart, BiMenu, BiSearch } from "react-icons/bi";
 

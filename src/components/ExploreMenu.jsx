@@ -44,8 +44,8 @@ export const ExploreMenu = () => {
 
         <div className="flex flex-row gap-5 overflow-x-auto scrollbar-hide mt-5">
           {categories.map((category) => (
-            <div className="flex flex-col gap-3" key={category.id}>
-              <div className="w-28">
+            <div key={category.id}>
+              <div className="w-28 flex items-center flex-col">
                 <img
                   src={category.image}
                   alt={category.name}

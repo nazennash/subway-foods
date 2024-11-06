@@ -1,4 +1,4 @@
-import image from "../../assets/image2.jpg";
+import image from "../assets/image2.jpg";
 
 export const Header = () => {
   return (
