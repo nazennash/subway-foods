@@ -32,11 +32,11 @@ export const Products = ({ selectedCategory, setSelectedCategory }) => {
           )}
         </div>
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-y-4 gap-x-2">
         {filteredProducts.slice(0, 10).map((product) => (
           <div
             key={product.id}
-            className="shadow-md rounded flex flex-col space-y-2 p-2 mx-auto"
+            className="shadow-md rounded flex flex-col space-y-2 p-2 mx-auto hover:transform hover:scale-105 hover:shadow-xl hover:duration-1000"
           >
             <img
               src={product.images}

@@ -29,9 +29,6 @@ export const Navbar = () => {
           <Link onClick={() => setActiveMenu("menu")} to="/">
             menu
           </Link>
-          <Link onClick={() => setActiveMenu("mobile-app")} to="/">
-            mobile-app
-          </Link>
           <Link onClick={() => setActiveMenu("contact")} to="/">
             contact us
           </Link>
@@ -65,7 +62,6 @@ export const Navbar = () => {
             <BiSearch size={30} />
             <Link to="/">home</Link>
             <Link to="/">menu</Link>
-            <Link to="/">mobile-app</Link>
             <Link to="/">contact us</Link>
           </div>
           <div className="flex w-full justify-between">
