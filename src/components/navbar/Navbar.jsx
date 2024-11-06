@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 import { BiCart, BiMenu, BiSearch } from "react-icons/bi";
 
 export const Navbar = () => {
+  const [menuIconClicked, setMenuIconClicked] = useState(false);
   return (
     <>
       <div className="flex justify-between items-center container mx-auto p-5">
@@ -35,28 +36,40 @@ export const Navbar = () => {
         <div className="md:hidden">
           <BiMenu
             size={30}
-            onClick={() => {
-              const mobileNavbar = document.getElementById("mobile-navbar");
-              if (mobileNavbar) {
-                mobileNavbar.classList.toggle("hidden");
-              }
-            }}
+            onClick={() => setMenuIconClicked(!menuIconClicked)}
           />
         </div>
       </div>
 
       {/* mobile navbar */}
-      <div
-        className="flex md:hidden flex-col gap-5 p-5 bg-slate-100 shadow-md"
-        id="mobile-navbar"
-      >
-        <BiSearch size={30} />
-        <Link to="/">home</Link>
-        <Link to="/">menu</Link>
-        <Link to="/">mobile-app</Link>
-        <Link to="/">contact us</Link>
-        <Link to="/">Sign in</Link>
-      </div>
+      {menuIconClicked && (
+        <div
+          className="flex md:hidden flex-col gap-5 p-2 bg-slate-100 shadow-md"
+          id="mobile-navbar"
+        >
+          <div className="flex flex-col p-3 capitalize gap-5">
+            <BiSearch size={30} />
+            <Link to="/">home</Link>
+            <Link to="/">menu</Link>
+            <Link to="/">mobile-app</Link>
+            <Link to="/">contact us</Link>
+          </div>
+          <div className="flex w-full justify-between">
+            <Link
+              to="/"
+              className="bg-blue-500 text-white w-1/2 p-3 text-center rounded-l-lg"
+            >
+              Sign in
+            </Link>
+            <Link
+              to="/"
+              className="bg-green-500 text-white w-1/2 p-3 text-center rounded-r-lg"
+            >
+              Login
+            </Link>
+          </div>
+        </div>
+      )}
     </>
   );
 };
