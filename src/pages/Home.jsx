@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Header } from "../components/Header";
 import { ExploreMenu } from "../components/ExploreMenu";
 import { Products } from "../components/Products";
+import { Footer } from "../components/Footer";
 
 export const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -15,7 +16,7 @@ export const Home = () => {
           setSelectedCategory={setSelectedCategory}
         />
       </div>
-      <div className="mt-5"></div>
+      <Footer />
     </>
   );
 };
