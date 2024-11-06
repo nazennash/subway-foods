@@ -10,8 +10,8 @@ export const Products = () => {
         <div>
           <div className="mb-2">
             <span className="font-bold text-xl">Products | </span>
-            <span>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+            <span className="text-gray-700">
+              Filter by clicking on categories above
             </span>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 ">
@@ -23,7 +23,7 @@ export const Products = () => {
                 <img
                   src={product.images}
                   alt={product.title}
-                  className="w-48 flex mx-auto"
+                  className="w-48 flex mx-auto rounded-t-xl"
                 />
                 <div>
                   <p className="font-semibold">
